@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ViewPattern">
         <activity
+            android:name=".MVVMActivity"
+            android:exported="true" />
+        <activity
+            android:name=".MVCActivity"
+            android:exported="true" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

@@ -5,39 +5,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:gravity="center"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/bookName_tv"
-        android:layout_width="match_parent"
+    <com.google.android.material.chip.Chip
+        android:id="@+id/goMVC_btn"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="책 이름 : "
+        android:text="MVC 패턴"
         android:textSize="25sp"/>
-    <TextView
-        android:id="@+id/authorName_tv"
-        android:layout_width="match_parent"
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/goMVVM_btn"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="작가 : "
+        android:text="MVVM 패턴"
         android:textSize="25sp"/>
-    <EditText
-        android:id="@+id/bookName_et"
-        android:layout_marginTop="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="책 이름을 입력해주세요"/>
-    <EditText
-        android:id="@+id/authorName_et"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="작가 명을 입력해주세요"/>
-    <Button
-        android:id="@+id/change_btn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="변경하기"/>
-
-
-
 
 
 </LinearLayout>
