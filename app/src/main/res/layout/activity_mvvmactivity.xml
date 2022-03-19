@@ -1,9 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MVVMActivity">
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="model"
+            type="com.example.viewpattern.MyNumberViewModel" />
+        <variable
+            name="actionType"
+            type="com.example.viewpattern.ActionType" />
+    </data>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingHorizontal="10dp"
+        tools:context=".MVVMActivity">
+
+        <TextView
+            android:id="@+id/number_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.valueOf(model.count)}"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <Button
+            android:id="@+id/minus_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="빼기"
+            android:onClick="@{()->model.updateValue(actionType.MINUS)}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/plus_btn"
+            app:layout_constraintTop_toTopOf="@+id/userInput_editText" />
+
+        <EditText
+            android:id="@+id/userInput_editText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@={model.inputText}"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toStartOf="@+id/plus_btn"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/number_textView" />
+
+        <Button
+            android:id="@+id/plus_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="더하기"
+            android:onClick="@{()->model.updateValue(actionType.PLUS)}"
+            android:layout_marginHorizontal="10dp"
+            app:layout_constraintEnd_toStartOf="@+id/minus_btn"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/userInput_editText"
+            app:layout_constraintTop_toTopOf="@+id/userInput_editText" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

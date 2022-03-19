@@ -1,0 +1,29 @@
+ /*MVC 패턴*/
+Model, View, Controller의 약자로
+프로젝트 구성 요소를 Model, View, Controller의 세가지 역할로 분리시켜 개발하는 방법론이다.
+비즈니스 처리 로직(Model)과 인터페이스 요소(Views)를 분리시켜
+독립적으로 개발하기가 수월하고 효과적으로 로직 재사용을 가능케 한다는 장점이 있다.
+
+*Model      :   데이터를 의미하는 객체
+*View       :   xml 파일
+*Control    :   Activity / Fragment 파일
+                View와 Model을 참조하고 제어에 필요한 변수 / 함수를 가지고 있다.
+                사용자의 조작(ex. 버튼 클릭)에 따라 View(화면 갱신, 이동)와
+                Model을 제어(생성, 변경, 삭제)한다.
+
+장점 :
+1. View기반 패턴중에 가장 쉽고 가장 오래된 패턴으로 구현이 비교적 쉽다.
+    -> 안드로이드에서 기본적으로 사용되고 있는 패턴
+2. Model과 View가 분리되어 있어 재사용이 가능하다.
+    (Book을 다른 activity에서도 사용할 수 있다.)
+단점 :
+1.Model과 View사이의 의존성을 완전히 없애지 못했다.
+    -> 모델의 값이 바뀔 때 마다 특정 뷰를 업데이트하도록 개발자가 일일이 처리해야한다.
+2.Controller(Activity,fragment)에 코드가 집중적으로 쌓이게되고 점점 더 알아보기 힘들어진다.
+    -> 유지보수 하기 힘들어진다.
+    -> 고로 규모가 커지면 MVVM 패턴을 지향해야함
+
+ -MVC 참고
+ https://velog.io/@5y145/MVC-%ED%8C%A8%ED%84%B4-for-Android
+ -ViewBinding 참고
+ https://duckssi.tistory.com/42

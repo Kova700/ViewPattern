@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -30,7 +31,8 @@ android {
         jvmTarget = '1.8'
     }
     buildFeatures {
-        viewBinding true
+        viewBinding = true
+        dataBinding = true
     }
 }
 
@@ -43,4 +45,14 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    def lifecycle_version = "2.5.0-alpha03"
+    // ViewModel - 라이프 사이클 관련
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    // LiveData - 옵저버 패턴 관련 - 즉, 데이터의 변경 사항을 알 수 있다.
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+    //데이터 바인딩을 이용할때 BindingAdapter라는 annotation을 작성하게 되는데
+    //kotlin의 annotation을 동작시키기 위해서 plugin kapt를 추가해야한.
+    kapt 'com.android.databinding:compiler:7.0.1'
+
 }

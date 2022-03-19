@@ -1,0 +1,48 @@
+ /*MVVM 패턴*/
+Model, View, ViewModel의 약자로
+
+프로젝트 구성 요소를 Model, View, Controller의 세가지 역할로 분리시켜 개발하는 방법론이다.
+비즈니스 처리 로직(Model)과 인터페이스 요소(Views)를 분리시켜
+독립적으로 개발하기가 수월하고 효과적으로 로직 재사용을 가능케 한다는 장점이 있다.
+
+
+*Model      :   데이터를 의미하는 객체
+*View       :   xml 파일
+*ViewModel  :   View를 표현하기 위해 만든 View를 위한 Model
+                View를 나타내주기 위한 데이터 처리담당
+
+-MVVM과 주로 함께 사용되는 개념
+*DataBinding
+*LiveData
+*ViewModel
+*Android Di(Koin,Dagger) : 아직 잘 모르겠음..
+
+장점 :
+1. View와 Model사이의 의존성이 없다.
+    -> 서로 코드가 바뀔 때 서로에게 영향을 주지 않는다.
+2. View와 ViewModel사이의 의존성 또한 존재하지 않는다.
+3. 각 부분들은 독럽적이기 때문에 개별적으로 개발이 가능하다.
+    -> MVC , MVP 모델의 최종 진화형태
+단점 :
+1.설계하기가 어렵다..
+
+#DataBinding
+View의 데이터를 Activity에서 세팅하는게 아니라
+xml에서 코드를 집어넣어서 해결하는 방법
+->  Activity에는 로직만을 위한 코드만 남고,
+    View와 관련된 작업은 xml파일에 정의된다.
+->  DataBinding = Data와 View를 연결하는 작업을
+    레이아웃에서 처리하는 기술
+
+-MVVM 참고
+    https://www.youtube.com/watch?v=-b0VNKw_niY
+
+-DataBinding 참고
+    https://kangmin1012.tistory.com/16?category=879935
+    https://kangmin1012.tistory.com/18?category=879935
+    https://develop-writing.tistory.com/46
+
+-LiveData 참고
+https://velog.io/@mingyun12304/Android-KotlinViewModel-LiveData
+
+추후에 수정..

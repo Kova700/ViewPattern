@@ -4,9 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import com.example.viewpattern.data.Book
+import com.example.viewpattern.MVC.MVCActivity
 import com.example.viewpattern.databinding.ActivityMainBinding
-import com.example.viewpattern.databinding.ActivityMvcactivityBinding
 import com.example.viewpattern.utils.Constansts.TAG
 
 class MainActivity : AppCompatActivity() {
@@ -20,12 +19,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.goMVCBtn.setOnClickListener {
-            val intent = Intent(this,MVCActivity::class.java)
+            val intent = Intent(this, MVCActivity::class.java)
             startActivity(intent)
         }
 
         binding.goMVVMBtn.setOnClickListener {
-            val intent = Intent(this,MVVMActivity::class.java)
+            val intent = Intent(this, MVVMActivity::class.java)
             startActivity(intent)
         }
     }
