@@ -11,6 +11,8 @@ import com.example.viewpattern.utils.Constansts.TAG
 
 class MVVMActivity : AppCompatActivity() {
 
+    /*MVVM패턴*/
+    
     //나중에 값이 설정될거라고 lateinit으로 설정
     lateinit var myNumberViewModel: MyNumberViewModel
 
