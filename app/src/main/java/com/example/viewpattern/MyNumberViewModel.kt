@@ -21,14 +21,16 @@ class MyNumberViewModel :ViewModel(){
     // 변경가능하도록 설정
     private val _count = MutableLiveData<Int>()
 
+    //EditText에서 사용자가 입력한 값
+    var inputText = MutableLiveData<String>()
+
     // 변경되지 않는 데이터를 가져 올때 이름을 _(언더스코어) 없이 설정
     // 공개적으로 가져오는 변수는 private이 아닌 public으로 외부에서도 접근가능하도록 설정
     // 하지만 값을 직접 LiveData에 접근하지 않고 ViewModel을 통해 가져올 수 있도록 설정
     val count : LiveData<Int>
         get() = _count
 
-    //EditText에서 사용자가 입력한 값
-    var inputText = MutableLiveData<String>()
+
 
     //초기값 설정
     init {

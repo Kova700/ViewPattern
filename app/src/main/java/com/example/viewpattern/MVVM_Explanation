@@ -50,6 +50,16 @@ xml에서 ViewModel의 값을 직접 가져오는  방법
 ->  DataBinding = Data와 View를 연결하는 작업을
     레이아웃(xml)에서 처리하는 기술
 
+xml파일 대략 구조
+    <layout>
+        <data>
+            <variable
+                name=""  //name = xml에서 사용할 변수명
+                type=""/> //type = 클래스,함수 경로
+            ...
+        </data>
+    </layout>
+
 #LiveData
 안드로이드 LifeCycle을 가지고 있는 DataType
     -> LifeCycle을 가지고 있어서 LifeCycle안에서만 동작한다.
@@ -58,6 +68,12 @@ Observer 객체를 사용해서 LiveData안에 Data업데이트를 확인할 수
        개발자가 직접 관리하지 않아도 된다.
 DataBinding과 함께 쓰게 된다면 Observer를 사용하지않고 손쉽게 View의 값을
 갱신할 수 있다.
+
+Observer 코드 대략 구조
+    val liveData = LiveData<String> //ViewModel에 작성
+    liveData.observe(LifeCycleOwner,observe{
+            //LiveData의 값이 변경되었을때 하고싶은 로직
+    }) --> DataBinding을 사용한다면 굳이 사용하지 않아도 됨
 
 #ViewModel
 Activity,Fragment같은 View의 LifeCycle과 독립적임으로
