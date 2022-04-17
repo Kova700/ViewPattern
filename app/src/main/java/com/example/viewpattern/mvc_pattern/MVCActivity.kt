@@ -1,4 +1,4 @@
-package com.example.viewpattern.MVC
+package com.example.viewpattern.mvc_pattern
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

@@ -1,4 +1,4 @@
-package com.example.viewpattern
+package com.example.viewpattern.mvvm_pattern
 
 import android.util.Log
 import androidx.lifecycle.LiveData

@@ -1,4 +1,4 @@
-package com.example.viewpattern
+package com.example.viewpattern.mvvm_pattern
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,6 +6,7 @@ import android.util.Log
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.example.viewpattern.R
 import com.example.viewpattern.databinding.ActivityMvvmactivityBinding
 import com.example.viewpattern.utils.Constansts.TAG
 
