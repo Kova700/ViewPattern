@@ -26,6 +26,7 @@ class MVVMActivity : AppCompatActivity() {
         //LifeCycle을 가지고 있는 녀석을 넣어줌 즉 자기 자신
         myNumberViewModel = ViewModelProvider(this).get(MyNumberViewModel::class.java)
 
+        //DataBinding사용한다면 굳이 LiveData의 observe를 사용할 필요가 없다.
         myNumberViewModel.count.observe(this , Observer {
             Log.d(TAG, "MVVMActivity: myNumberViewModel - count의 LiveData값 변경 : $it")
         })
@@ -35,10 +36,11 @@ class MVVMActivity : AppCompatActivity() {
         })
 
         // 뷰 모델 객체에 실제 lifecycleowner를 현재 activity로 지정해줘야 함
+        // (그래야 동적으로 상태 변화를 인지할 수 있음)
         binding.lifecycleOwner = this
-        // 뷰 모델을 바인딩 변수로 사용함
+        // 뷰(xml)에 정의한 model 변수를 ViewModel과 연결 (ViewModel을 바인딩 변수로 사용함)
         binding.model = myNumberViewModel
-    }
+0    }
 
 
 }
