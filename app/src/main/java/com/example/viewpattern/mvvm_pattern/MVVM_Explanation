@@ -20,19 +20,33 @@ MVVM 패턴은 MVC 패턴에서 Controller를 빼고 ViewModel을 추가한 패�
 *LiveData / ViewModel
 *Android Di(Koin,Dagger) : 아직 잘 모르겠음..
 
+View는 ViewModel을 알지만 ViewModel은 View를 알지 못하고,
+ViewModel은 Model을 알지만(Repository 패턴을 사용하면 의존성 줄어듬)
+Model은 ViewModel을 알지못한다.
+즉, 한쪽 방향으로만 의존 관계가 잇어서 각 모듈별로 분리하여 개발할 수 있다.
+
 장점 :
 1. View와 Model사이의 의존성이 없다.
-    -> 서로 코드가 바뀔 때 서로에게 영향을 크게 주지 않는다. = 독립적이다.
+    -> View는 ViewModel의 데이터만 바라보고 있고, ViewModel이 Model에게 데이터를 요청하고 최신화한다.
 2. View와 ViewModel을 바인딩하기 때문에 코드의 양이 줄어든다
-3. 각각의 부분이 독립적이기 때문에 모듈화 하여 개발할 수 있다.
+    -> 평소에 사용하던 findViewId()와 같은 보일러 코드가 줄어든다.
+    -> 또한 데이터를 주입하거나 연결하던 작업을 하지 않아도 된다.
+        (View가 ViewModel의 값을 보고 있어서 자동 갱신되기 때문)
+3. Model , View , ViewModel 부분 부분이 독립적이기 때문에 모듈화 하여 개발할 수 있다.
     -> MVC , MVP 모델의 최종 진화형태
 4. 유닛테스트를 하기가 좋다.
-    -> ViewModel에는 UIKit 관련 코드가 없고 Controller(Activity)와의 의존성도 없기 때문
 
 단점 :
 1.설계하기가 어렵다..
-2.간단한 UI에서 오히려 ViewModel설계가 더 번거롭다.
-4.복잡해질수록 Controller처럼 ViewModel이 빠르게 비대해진다.
+2.간단한 UI에서는 오히려 ViewModel설계가 더 번거롭다.
+3.복잡해질수록 Controller처럼 ViewModel이 빠르게 비대해진다.
+
+추가)
+ AAC ViewModel과 MVVM의 ViewModel은 같지 않다.
+ AAC ViewModel은 ViewModelProviders를 사용해서 ViewModel을 만드는데,
+ 이렇게 만들어진 뷰모델은 그 액티비티에서 딱 하나만 존재하게 된다.
+ 액티비티 한 개 내에서만 유효한 싱글톤인 셈이다. 이런 특성은 일반적인 MVVM에서는 강제되는 것이 아니기 때문에 혼란이 올 수 있다.
+
 
 #DataBinding
 보통 View에 데이터를 넣을 때 Activity(혹은 Fragment)에서 하는데
@@ -83,6 +97,8 @@ Activity가 완전히 종료될 떄 까지 데이터를 저장해야하는 경�
 -MVVM 참고
     https://www.youtube.com/watch?v=-b0VNKw_niY
     https://jhtop0419.tistory.com/m/21
+    https://wooooooak.github.io/android/2019/05/07/aac_viewmodel/
+    https://medium.com/kenneth-android/android-mvvm-viewmodel%EA%B3%BC-aac-viewmodel%EC%9D%98-%EC%B0%A8%EC%9D%B4-8c0d54922e07
 
 -DataBinding 참고
     https://kangmin1012.tistory.com/16?category=879935

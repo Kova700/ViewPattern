@@ -3,10 +3,8 @@ package com.example.viewpattern.mvc_pattern
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import com.example.viewpattern.data.Book
-import com.example.viewpattern.databinding.ActivityMainBinding
+import com.example.viewpattern.mvc_pattern.data.Book
 import com.example.viewpattern.databinding.ActivityMvcactivityBinding
-import com.example.viewpattern.utils.Constansts
 import com.example.viewpattern.utils.Constansts.TAG
 
 class MVCActivity : AppCompatActivity() {
@@ -24,7 +22,6 @@ class MVCActivity : AppCompatActivity() {
 
         //뷰 바인딩 (레이아웃 내부의 최상위 위치 뷰의 인스턴스 전달)
         setContentView(binding.root) //뷰 참조 (xml파일)
-
 
         //컨트롤러 (버튼 이벤트 발생하면 뷰와 모델을 제어할 수 있다.)
         binding.changeBtn.setOnClickListener {

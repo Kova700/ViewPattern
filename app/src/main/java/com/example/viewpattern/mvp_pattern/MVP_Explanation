@@ -1,0 +1,67 @@
+ /*MVP 패턴*/
+Model, View, Presenter의 약자로
+프로젝트 구성 요소를 Model, View, Presenter의 세가지 역할로 분리시켜 개발하는 방법론이다.
+비즈니스 처리 로직(Model)과 인터페이스 요소(Views)를 분리시켜
+독립적으로 개발하기가 수월하고 효과적으로 로직 재사용을 가능케 한다는 장점이 있다.
+
+*Model      :   DB, REST API등 비즈니스 로직 및 데이터와 관련된 처리역할을 담당
+*View       :   Activity와 Fragment와 같이 View를 담당하는 사용자 인터페이스 역할을 담당
+*Presenter  :   View에서 이벤트를 받아서 데이터를 가공하여 View에 전달하는 역할을 담당
+
+예제 시나리오 :
+    사용자가 버튼을 누르면 Dog List의 이름과 나이가 보여야한다.
+
+역할의 흐름 :
+    1.사용자가 버튼을 누른다.
+            -> View에서 클릭 이벤트가 발생
+            -> View에서 발생한 클릭 이벤트를 Presenter로 전달.
+    2.Dog List를 DB 혹은 REST API를 통해 가져온다.
+            -> Presenter가 Model에게 데이터를 요청한다.
+            -> Model이 Presenter에 요청한 데이터를 전달한다. (서버 , DB에서 가져온 데이터)
+            -> Presenter가 Model에서 전달받은 데이터를 정제(가공)한다.
+            -> Presenter가 정제한 데이터를 View에 전달한다.
+    3.Dog List의 이름과 나이가 보여야 한다.
+            -> View가 Presenter에서 전달받은 데이터를 사용자에게 보여준다.
+
+    Presenter는 View에 표시할 내용만 전달한다는 특징이 있다.
+    ( View와 Presenter는 1:1로 매칭된다.)
+
+    안드로이드 애플리케이션은 기본적으로 MVC 모델로 구성되어있으며, Activity나 Fragment같은 View들이
+    View와 Controller역할을 모두 한다. (고로 코드가 Activity나 Fragment안에 죄다 몰린다.)
+    MVP에서는 Activity나 Fragment같은 View들이 진짜 UI구성만하고
+    특정 이벤트가 발생하면 Presenter에게 알려서 특정 데이터값을 Presenter에게 요청하는 형식이다.
+    (MVC는 Activity ,Fragment안에 죄다 때려박는 방식)
+
+/////////////////////////////////////////////////////////////////////////////
+장점 :
+1. View와 Model 사이의 의존성을 낮출 수 있다.
+    -> Model호출을 Presenter가 하기때문에 View와 Model간의 의존성은 낮아진다.
+단점 :
+1.어플리케이션이 복잡해질수록 View와 Presenter 사이의 의존성이 강해지는 문제가 있다.
+    ->MVVM으로 넘어가보면 알겠지만 ViewModel은 Presenter처럼 특정 View에 의존적이지 않아서
+        다른 View와도 연결할 수 있다. 그래서 하나의 ViewModel을 다수의 View에서 사용할 수 있다.
+        (1:N 관계가 성립한다는 말)
+        허나 Presenter는 애초에 태생 자체가 Presenter와 연결할 View를 정의해야하니
+        View와 Presenter는 1:1관게
+
+        <-> 하지만 AAC(Android Architecture Component)의 ViewModel은 MVVM의 ViewModel과는 달라
+        MVVM의 ViewModel처럼 1:N관계를 가질 수 없다. Activity내에 1개만 생성가능하다.
+        (생성은 가능할지 몰라도 LiveData를 이용한 데이터 최신화가 불가능하다. LifeCycelOwner를 가져오지 못하니까)
+        (애초에 AAC의 ViewModel은 화면 회전과 같은 환경에서 데이터를 보관하고 라이프 사이클을 알고 있어서
+        Activity나 Fragment의 Destroy시 onClear함수를 통한 데이터 해제의 역할을 하고 있다
+        구글에서 ViewModel의 목적은 데이터를 관리하고 바인딩하라는 목적으로 만든 것이 아니다.
+        실제로 구글 ViewModel의 문서에는 MVVM을 언급하고 있지 않다.)
+        (AAC ViewModel은 ViewModelProviders를 사용해서 ViewModel을 만드는데,
+        이렇게 만들어진 뷰모델은 그 액티비티에서 딱 하나만 존재하게 된다.
+        액티비티 한 개 내에서만 유효한 싱글톤인 셈이다.
+        이런 특성은 일반적인 MVVM에서는 강제되는 것이 아니기 때문에 혼란이 올 수 있다.)
+
+
+
+-MVP 참고
+https://medium.com/@Hanmolee/mvp-kotlin-example-2de93add4c82
+https://salix97.tistory.com/206
+
+-MVVP 참고
+https://medium.com/kenneth-android/android-mvvm-viewmodel%EA%B3%BC-aac-viewmodel%EC%9D%98-%EC%B0%A8%EC%9D%B4-8c0d54922e07
+https://wooooooak.github.io/android/2019/05/07/aac_viewmodel/

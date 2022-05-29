@@ -10,10 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ViewPattern">
         <activity
-            android:name=".MVVMActivity"
+            android:name=".mvp_pattern.BaseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".mvp_pattern.MVPActivity"
+            android:exported="false" />
+        <activity
+            android:name=".mvvm_pattern.MVVMActivity"
             android:exported="true" />
         <activity
-            android:name=".MVC.MVCActivity"
+            android:name=".mvc_pattern.MVCActivity"
             android:exported="true" />
         <activity
             android:name=".MainActivity"

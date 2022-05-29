@@ -4,8 +4,10 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import com.example.viewpattern.MVC.MVCActivity
+import com.example.viewpattern.mvc_pattern.MVCActivity
+import com.example.viewpattern.mvvm_pattern.MVVMActivity
 import com.example.viewpattern.databinding.ActivityMainBinding
+import com.example.viewpattern.mvp_pattern.MVPActivity
 import com.example.viewpattern.utils.Constansts.TAG
 
 class MainActivity : AppCompatActivity() {
@@ -25,6 +27,11 @@ class MainActivity : AppCompatActivity() {
 
         binding.goMVVMBtn.setOnClickListener {
             val intent = Intent(this, MVVMActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.goMVPBtn.setOnClickListener {
+            val intent = Intent(this, MVPActivity::class.java)
             startActivity(intent)
         }
     }
